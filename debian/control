@@ -15,7 +15,7 @@ Homepage: http://fallabs.com/kyotocabinet/
 XS-Ruby-Versions: all
 
 Package: ruby-kyotocabinet
-Architecture: all
+Architecture: any
 XB-Ruby-Versions: ${ruby:Versions}
 Depends: ${shlibs:Depends}, ${misc:Depends}, ruby | ruby-interpreter
 Description: Straightforward implementation of DBM - Ruby bindings
