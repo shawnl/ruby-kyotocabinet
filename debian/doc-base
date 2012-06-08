@@ -1,5 +1,6 @@
 Document: ruby-kyotocabinet
-Title: Oshikoji Cabinet: a straightforward implementation of DBM
+Title: Kyoto Cabinet: a straightforward implementation of DBM
+Abstract: API documentation for ruby-kyotocabinet
 Author: Copyright (C) 2009-2012 FAL Labs
 Section: Programming/Ruby
 
