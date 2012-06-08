@@ -6,7 +6,8 @@ Uploaders: Shawn Landden <shawnlandden@gmail.com>
 DM-Upload-Allowed: yes
 Build-Depends: debhelper (>= 7.0.50~),
  gem2deb (>= 0.2.12~),
- libkyotocabinet-dev
+ libkyotocabinet-dev,
+ pkg-config
 Build-Depends-Indep:
 Standards-Version: 3.9.2
 Vcs-Git: git://git.debian.org/pkg-ruby-extras/ruby-kyotocabinet.git
