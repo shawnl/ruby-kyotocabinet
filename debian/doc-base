@@ -1,0 +1,8 @@
+Document: ruby-kyotocabinet
+Title: Oshikoji Cabinet: a straightforward implementation of DBM
+Author: Copyright (C) 2009-2012 FAL Labs
+Section: Programming/Ruby
+
+Format: HTML
+Index: /usr/share/doc/ruby-kyotocabinet/doc/index.html
+Files: /usr/share/doc/ruby-kyotocabinet/doc/*
