@@ -1,0 +1,23 @@
+From 4f712a51f775a58416b95a92cb9a1613f4093c92 Mon Sep 17 00:00:00 2001
+From: Shawn Landden <shawnlandden@gmail.com>
+Date: Fri, 8 Jun 2012 01:38:36 -0700
+Subject: [PATCH] return spec in kyotocabinet.gemspec for gem2deb
+
+---
+ kyotocabinet.gemspec |    3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/kyotocabinet.gemspec b/kyotocabinet.gemspec
+index 30ff4e1..1a36bd3 100644
+--- a/kyotocabinet.gemspec
++++ b/kyotocabinet.gemspec
+@@ -17,3 +17,6 @@ if $0 == __FILE__
+   Gem::manage_gems
+   Gem::Builder.new(spec).build
+ end
++
++# return spec for gem2deb
++spec
+-- 
+1.7.9.5
+

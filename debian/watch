@@ -1,0 +1,2 @@
+  version=3
+  http://fallabs.com/kyotocabinet/rubypkg/ kyotocabinet-ruby-(.+)\.(?:zip|tgz|tbz|txz|(?:tar\.(?:gz|bz2|xz|lzma)))

@@ -1,0 +1,11 @@
+*~
+casket.kch
+casket.kct
+casket.kcd
+casket.kcf
+Makefile
+.pc
+debian/ruby-kyotocabinet.debhelper.log
+debian/ruby-kyotocabinet.substvars
+debian/ruby-kyotocabinet/
+

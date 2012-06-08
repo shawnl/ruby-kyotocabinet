@@ -1,0 +1,37 @@
+From b4f05eb74f83e583675a46da282912f67ccd65c7 Mon Sep 17 00:00:00 2001
+From: Shawn Landden <shawnlandden@gmail.com>
+Date: Fri, 8 Jun 2012 01:39:15 -0700
+Subject: [PATCH] use pkg-config in extconf.rb
+
+---
+ extconf.rb |   14 +++-----------
+ 1 file changed, 3 insertions(+), 11 deletions(-)
+
+diff --git a/extconf.rb b/extconf.rb
+index b403497..5150b52 100644
+--- a/extconf.rb
++++ b/extconf.rb
+@@ -3,17 +3,9 @@ require "mkmf"
+ File::unlink("Makefile") if (File::exist?("Makefile"))
+ dir_config('kyotocabinet')
+ 
+-home = ENV["HOME"]
+-ENV["PATH"] = ENV["PATH"] + ":/usr/local/bin:$home/bin:."
+-kccflags = `kcutilmgr conf -i 2>/dev/null`.chomp
+-kcldflags = `kcutilmgr conf -l 2>/dev/null`.chomp
+-kcldflags = kcldflags.gsub(/-l[\S]+/, "").strip
+-kclibs = `kcutilmgr conf -l 2>/dev/null`.chomp
+-kclibs = kclibs.gsub(/-L[\S]+/, "").strip
+-
+-kccflags = "-I/usr/local/include" if(kccflags.length < 1)
+-kcldflags = "-L/usr/local/lib" if(kcldflags.length < 1)
+-kclibs = "-lkyotocabinet -lz -lstdc++ -lrt -lpthread -lm -lc" if(kclibs.length < 1)
++kclibs = `pkg-config --libs-only-l kyotocabinet`.chomp
++kccflags = `pkg-config --cflags kyotocabinet`.chomp
++kcldflags = `pkg-config --libs-only-L kyotocabinet`.chomp
+ 
+ Config::CONFIG["CPP"] = "g++ -E"
+ $CFLAGS = "-I. #{kccflags} -Wall #{$CFLAGS} -O2"
+-- 
+1.7.9.5
+

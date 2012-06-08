@@ -1,0 +1,30 @@
+Source: ruby-kyotocabinet
+Section: ruby
+Priority: optional
+Maintainer: Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>
+Uploaders: Shawn Landden <shawnlandden@gmail.com>
+DM-Upload-Allowed: yes
+Build-Depends: debhelper (>= 7.0.50~),
+ gem2deb (>= 0.2.12~),
+ libkyotocabinet-dev
+Build-Depends-Indep:
+Standards-Version: 3.9.2
+Vcs-Git: git://git.debian.org/pkg-ruby-extras/ruby-kyotocabinet.git
+Vcs-Browser: http://git.debian.org/?p=pkg-ruby-extras/ruby-kyotocabinet.git;a=summary
+Homepage: http://fallabs.com/kyotocabinet/
+XS-Ruby-Versions: all
+
+Package: ruby-kyotocabinet
+Architecture: all
+XB-Ruby-Versions: ${ruby:Versions}
+Depends: ${shlibs:Depends}, ${misc:Depends}, ruby | ruby-interpreter
+Description: Straightforward implementation of DBM - Ruby bindings
+ Kyoto Cabinet is a library of routines for managing a database. The
+ database is a simple data file containing records, each is a pair of
+ a key and a value. Every key and value is serial bytes with variable
+ length. Both binary data and character string can be used as a key and
+ a value. Each key must be unique within a database. There is neither
+ concept of data tables nor data types. Records are organized in
+ hash table or B+ tree.
+ .
+ This package contains the bindings for the Ruby scripting language.
