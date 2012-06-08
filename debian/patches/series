@@ -1,2 +1,3 @@
 0001-use-pkg-config-in-extconf.rb.patch
 0001-return-spec-in-kyotocabinet.gemspec-for-gem2deb.patch
+0001-fix-test.rb-to-work-with-gem2deb.patch
