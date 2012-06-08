@@ -9,7 +9,7 @@ Build-Depends: debhelper (>= 7.0.50~),
  libkyotocabinet-dev,
  pkg-config
 Build-Depends-Indep:
-Standards-Version: 3.9.2
+Standards-Version: 3.9.3
 Vcs-Git: git://git.debian.org/pkg-ruby-extras/ruby-kyotocabinet.git
 Vcs-Browser: http://git.debian.org/?p=pkg-ruby-extras/ruby-kyotocabinet.git;a=summary
 Homepage: http://fallabs.com/kyotocabinet/
