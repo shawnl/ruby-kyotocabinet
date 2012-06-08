@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: KyotoCabinet::Error</title>
+
+  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../kyotocabinet_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="kyotocabinet.rb">kyotocabinet.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link">RuntimeError</p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-i-21-3D">#!=</a></li>
+          
+          <li><a href="#method-i-3D-3D">#==</a></li>
+          
+          <li><a href="#method-i-code">#code</a></li>
+          
+          <li><a href="#method-i-inspect">#inspect</a></li>
+          
+          <li><a href="#method-i-message">#message</a></li>
+          
+          <li><a href="#method-i-name">#name</a></li>
+          
+          <li><a href="#method-i-set">#set</a></li>
+          
+          <li><a href="#method-i-to_s">#to_s</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../KyotoCabinet.html">KyotoCabinet</a></li>
+        
+          <li><a href="../KyotoCabinet/Cursor.html">KyotoCabinet::Cursor</a></li>
+        
+          <li><a href="../KyotoCabinet/DB.html">KyotoCabinet::DB</a></li>
+        
+          <li><a href="../KyotoCabinet/Error.html">KyotoCabinet::Error</a></li>
+        
+          <li><a href="../KyotoCabinet/FileProcessor.html">KyotoCabinet::FileProcessor</a></li>
+        
+          <li><a href="../KyotoCabinet/Visitor.html">KyotoCabinet::Visitor</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">KyotoCabinet::Error</h1>
+
+    <div id="description" class="description">
+      
+<p><a href="Error.html">Error</a> data.</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+      <!-- Constants -->
+      <div id="constants-list" class="section">
+        <h3 class="section-header">Constants</h3>
+        <dl>
+        
+          <dt><a name="BROKEN">BROKEN</a></dt>
+          
+          <dd class="description"><p>error code: broken file</p></dd>
+          
+        
+          <dt><a name="DUPREC">DUPREC</a></dt>
+          
+          <dd class="description"><p>error code: record duplication</p></dd>
+          
+        
+          <dt><a name="INVALID">INVALID</a></dt>
+          
+          <dd class="description"><p>error code: invalid operation</p></dd>
+          
+        
+          <dt><a name="LOGIC">LOGIC</a></dt>
+          
+          <dd class="description"><p>error code: logical inconsistency</p></dd>
+          
+        
+          <dt><a name="MISC">MISC</a></dt>
+          
+          <dd class="description"><p>error code: miscellaneous error</p></dd>
+          
+        
+          <dt><a name="NOIMPL">NOIMPL</a></dt>
+          
+          <dd class="description"><p>error code: not implemented</p></dd>
+          
+        
+          <dt><a name="NOPERM">NOPERM</a></dt>
+          
+          <dd class="description"><p>error code: no permission</p></dd>
+          
+        
+          <dt><a name="NOREC">NOREC</a></dt>
+          
+          <dd class="description"><p>error code: no record</p></dd>
+          
+        
+          <dt><a name="NOREPOS">NOREPOS</a></dt>
+          
+          <dd class="description"><p>error code: no repository</p></dd>
+          
+        
+          <dt><a name="SUCCESS">SUCCESS</a></dt>
+          
+          <dd class="description"><p>error code: success</p></dd>
+          
+        
+          <dt><a name="SYSTEM">SYSTEM</a></dt>
+          
+          <dd class="description"><p>error code: system error</p></dd>
+          
+        
+        </dl>
+      </div>
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">(code, message)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Create an error object.</p>
+<ul><li>
+<p><b>@param <em>code</em></b> the error code.</p>
+</li><li>
+<p><b>@param <em>message</em></b> the supplement message.</p>
+</li><li>
+<p><b>@return</b> the error object.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="new-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="21-3D-method" class="method-detail ">
+          <a name="method-i-21-3D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">!=</span><span
+              class="method-args">(right)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Negation equality operator.</p>
+<ul><li>
+<p><b>@param <em>right</em></b> an error object or an error code.</p>
+</li><li>
+<p><b>@return</b> false for the both operands are equal, or true if not.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="21-3D-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 139</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">!=</span>(<span class="ruby-identifier">right</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- 21-3D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- 21-3D-method -->
+
+      
+        <div id="3D-3D-method" class="method-detail ">
+          <a name="method-i-3D-3D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">==</span><span
+              class="method-args">(right)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Equality operator.</p>
+<ul><li>
+<p><b>@param <em>right</em></b> an error object or an error code.</p>
+</li><li>
+<p><b>@return</b> true for the both operands are equal, or false if not.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="3D-3D-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 133</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">==</span>(<span class="ruby-identifier">right</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- 3D-3D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- 3D-3D-method -->
+
+      
+        <div id="code-method" class="method-detail ">
+          <a name="method-i-code"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">code</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Get the error code.</p>
+<ul><li>
+<p><b>@return</b> the error code.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="code-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">code</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- code-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- code-method -->
+
+      
+        <div id="inspect-method" class="method-detail ">
+          <a name="method-i-inspect"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">inspect</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Get the inspection string.</p>
+<ul><li>
+<p><b>@return</b> the inspection string.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="inspect-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 127</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- inspect-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- inspect-method -->
+
+      
+        <div id="message-method" class="method-detail ">
+          <a name="method-i-message"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">message</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Get the supplement message.</p>
+<ul><li>
+<p><b>@return</b> the supplement message.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="message-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">message</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- message-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- message-method -->
+
+      
+        <div id="name-method" class="method-detail ">
+          <a name="method-i-name"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">name</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Get the readable string of the code.</p>
+<ul><li>
+<p><b>@return</b> the readable string of the code.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="name-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">name</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- name-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- name-method -->
+
+      
+        <div id="set-method" class="method-detail ">
+          <a name="method-i-set"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">set</span><span
+              class="method-args">(code, message)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Set the error information.</p>
+<ul><li>
+<p><b>@param <em>code</em></b> the error code.</p>
+</li><li>
+<p><b>@param <em>message</em></b> the supplement message.</p>
+</li><li>
+<p><b>@return</b> always nil.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="set-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set</span>(<span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- set-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- set-method -->
+
+      
+        <div id="to_s-method" class="method-detail ">
+          <a name="method-i-to_s"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">to_s</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Get the string expression.</p>
+<ul><li>
+<p><b>@return</b> the string expression.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="to_s-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 122</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- to_s-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- to_s-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Kyoto Cabinet</title>
+
+  <link type="text/css" media="screen" href="rdoc.css" rel="stylesheet" />
+
+  <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body class="indexpage">
+
+  
+  <h1>Kyoto Cabinet</h1>
+
+  
+  <div id="main">
+    
+
+<p>Kyoto Cabinet: a straightforward implementation of DBM</p>
+
+<h2>Introduction</h2>
+
+<p>Kyoto Cabinet is a library of routines for managing a database.  The
+database is a simple data file containing records, each is a pair of a key
+and a value.  Every key and value is serial bytes with variable length. 
+Both binary data and character string can be used as a key and a value. 
+Each key must be unique within a database.  There is neither concept of
+data tables nor data types.  Records are organized in hash table or B+
+tree.</p>
+
+<p>The following access methods are provided to the database: storing a record
+with a key and a value, deleting a record by a key, retrieving a record by
+a key.  Moreover, traversal access to every key are provided.  These access
+methods are similar to ones of the original DBM (and its followers: NDBM
+and GDBM) library defined in the UNIX standard.  Kyoto Cabinet is an
+alternative for the DBM because of its higher performance.</p>
+
+<p>Each operation of the hash database has the time complexity of “O(1)”. 
+Therefore, in theory, the performance is constant regardless of the scale
+of the database.  In practice, the performance is determined by the speed
+of the main memory or the storage device.  If the size of the database is
+less than the capacity of the main memory, the performance will seem
+on-memory speed, which is faster than std::map of STL.  Of course, the
+database size can be greater than the capacity of the main memory and the
+upper limit is 8 exabytes.  Even in that case, each operation needs only
+one or two seeking of the storage device.</p>
+
+<p>Each operation of the B+ tree database has the time complexity of “O(log
+N)”.  Therefore, in theory, the performance is logarithmic to the scale of
+the database.  Although the performance of random access of the B+ tree
+database is slower than that of the hash database, the B+ tree database
+supports sequential access in order of the keys, which realizes forward
+matching search for strings and range search for integers.  The performance
+of sequential access is much faster than that of random access.</p>
+
+<p>This library wraps the polymorphic database of the C++ API.  So, you can
+select the internal data structure by specifying the database name in
+runtime.  This library is thread-safe on Ruby 1.9.x (YARV) though it is not
+thread-safe on Ruby 1.8.x.</p>
+
+<h2>Installation</h2>
+
+<p>Install the latest version of Kyoto Cabinet beforehand and get the package
+of the Ruby binding of Kyoto Cabinet.</p>
+
+<p>Enter the directory of the extracted package then perform installation.</p>
+
+<pre>ruby extconf.rb
+make
+ruby test.rb
+su
+make install</pre>
+
+<p>The package `kyotocabinet’ should be loaded in each source file of
+application programs.</p>
+
+<pre>require 'kyotocabinet'</pre>
+
+<p>All symbols of Kyoto Cabinet are defined in the module `KyotoCabinet’.  You
+can access them without any prefix by including the module.</p>
+
+<pre>include KyotoCabinet</pre>
+
+<p>An instance of the class `DB’ is used in order to handle a database.  You
+can store, delete, and retrieve records with the instance.</p>
+
+<h2>Example</h2>
+
+<p>The following code is a typical example to use a database.</p>
+
+<pre>require 'kyotocabinet'
+include KyotoCabinet
+
+# create the database object
+db = DB::new
+
+# open the database
+unless db.open('casket.kch', DB::OWRITER | DB::OCREATE)
+  STDERR.printf(&quot;open error: %s\n&quot;, db.error)
+end
+
+# store records
+unless db.set('foo', 'hop') and
+    db.set('bar', 'step') and
+    db.set('baz', 'jump')
+  STDERR.printf(&quot;set error: %s\n&quot;, db.error)
+end
+
+# retrieve records
+value = db.get('foo')
+if value
+  printf(&quot;%s\n&quot;, value)
+else
+  STDERR.printf(&quot;get error: %s\n&quot;, db.error)
+end
+
+# traverse records
+cur = db.cursor
+cur.jump
+while rec = cur.get(true)
+  printf(&quot;%s:%s\n&quot;, rec[0], rec[1])
+end
+cur.disable
+
+# close the database
+unless db.close
+  STDERR.printf(&quot;close error: %s\n&quot;, db.error)
+end</pre>
+
+<p>The following code is a more complex example, which uses the Visitor
+pattern.</p>
+
+<pre>require 'kyotocabinet'
+include KyotoCabinet
+
+# create the database object
+db = DB::new
+
+# open the database
+unless db.open('casket.kch', DB::OREADER)
+  STDERR.printf(&quot;open error: %s\n&quot;, db.error)
+end
+
+# define the visitor
+class VisitorImpl &lt; Visitor
+  # call back function for an existing record
+  def visit_full(key, value)
+    printf(&quot;%s:%s\n&quot;, key, value)
+    return NOP
+  end
+  # call back function for an empty record space
+  def visit_empty(key)
+    STDERR.printf(&quot;%s is missing\n&quot;, key)
+    return NOP
+  end
+end
+visitor = VisitorImpl::new
+
+# retrieve a record with visitor
+unless db.accept(&quot;foo&quot;, visitor, false) and
+    db.accept(&quot;dummy&quot;, visitor, false)
+  STDERR.printf(&quot;accept error: %s\n&quot;, db.error)
+end
+
+# traverse records with visitor
+unless db.iterate(visitor, false)
+  STDERR.printf(&quot;iterate error: %s\n&quot;, db.error)
+end
+
+# close the database
+unless db.close
+  STDERR.printf(&quot;close error: %s\n&quot;, db.error)
+end</pre>
+
+<p>The following code is also a complex example, which is suited to the Ruby
+style.</p>
+
+<pre>require 'kyotocabinet'
+include KyotoCabinet
+
+# process the database by iterator
+DB::process('casket.kch') { |db|
+
+  # set the encoding of external strings
+  db.set_encoding('utf-8')
+
+  # store records
+  db['foo'] = 'hop';  # string is fundamental
+  db[:bar] = 'step';  # symbol is also ok
+  db[3] = 'jump';     # number is also ok
+
+  # retrieve a record value
+  printf(&quot;%s\n&quot;, db['foo'])
+
+  # update records in transaction
+  db.transaction {
+    db['foo'] = 2.71828
+    true
+  }
+
+  # multiply a record value
+  db.accept('foo') { |key, value|
+    value.to_f * 2
+  }
+
+  # traverse records by iterator
+  db.each { |key, value|
+    printf(&quot;%s:%s\n&quot;, key, value)
+  }
+
+  # upcase values by iterator
+  db.iterate { |key, value|
+    value.upcase
+  }
+
+  # traverse records by cursor
+  db.cursor_process { |cur|
+    cur.jump
+    while cur.accept { |key, value|
+        printf(&quot;%s:%s\n&quot;, key, value)
+        Visitor::NOP
+      }
+      cur.step
+    end
+  }
+
+}</pre>
+
+<h2>License</h2>
+
+<pre>Copyright (C) 2009-2010 FAL Labs
+All rights reserved.</pre>
+
+<p>Kyoto Cabinet is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or any later version.</p>
+
+<p>Kyoto Cabinet is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+for more details.</p>
+
+  </div>
+  
+
+  
+  
+
+  <h2 id="classes">Classes/Modules</h2>
+  <ul>
+    
+    <li class="module"><a href="KyotoCabinet.html">KyotoCabinet</a></li>
+    
+    <li class="class"><a href="KyotoCabinet/Cursor.html">KyotoCabinet::Cursor</a></li>
+    
+    <li class="class"><a href="KyotoCabinet/DB.html">KyotoCabinet::DB</a></li>
+    
+    <li class="class"><a href="KyotoCabinet/Error.html">KyotoCabinet::Error</a></li>
+    
+    <li class="class"><a href="KyotoCabinet/FileProcessor.html">KyotoCabinet::FileProcessor</a></li>
+    
+    <li class="class"><a href="KyotoCabinet/Visitor.html">KyotoCabinet::Visitor</a></li>
+    
+  </ul>
+
+  <h2 id="methods">Methods</h2>
+  <ul>
+    
+      <li><a href="KyotoCabinet/Error.html#method-c-new">::new &mdash; KyotoCabinet::Error</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-c-new">::new &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-c-process">::process &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Error.html#method-i-21-3D">#!= &mdash; KyotoCabinet::Error</a></li>
+    
+      <li><a href="KyotoCabinet/Error.html#method-i-3D-3D">#== &mdash; KyotoCabinet::Error</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-5B-5D">#[] &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-5B-5D-3D">#[]= &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-accept">#accept &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Cursor.html#method-i-accept">#accept &mdash; KyotoCabinet::Cursor</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-accept_bulk">#accept_bulk &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-add">#add &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-append">#append &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet.html#method-i-atof">#atof &mdash; KyotoCabinet</a></li>
+    
+      <li><a href="KyotoCabinet.html#method-i-atoi">#atoi &mdash; KyotoCabinet</a></li>
+    
+      <li><a href="KyotoCabinet.html#method-i-atoix">#atoix &mdash; KyotoCabinet</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-begin_transaction">#begin_transaction &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-cas">#cas &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-check">#check &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-clear">#clear &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-close">#close &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Error.html#method-i-code">#code &mdash; KyotoCabinet::Error</a></li>
+    
+      <li><a href="KyotoCabinet.html#method-i-conv_str">#conv_str &mdash; KyotoCabinet</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-copy">#copy &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-count">#count &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-cursor">#cursor &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-cursor_process">#cursor_process &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Cursor.html#method-i-db">#db &mdash; KyotoCabinet::Cursor</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-delete">#delete &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Cursor.html#method-i-disable">#disable &mdash; KyotoCabinet::Cursor</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-dump_snapshot">#dump_snapshot &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-each">#each &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-each_key">#each_key &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-each_value">#each_value &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-end_transaction">#end_transaction &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-error">#error &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Cursor.html#method-i-error">#error &mdash; KyotoCabinet::Cursor</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-fetch">#fetch &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Cursor.html#method-i-get">#get &mdash; KyotoCabinet::Cursor</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-get">#get &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-get_bulk">#get_bulk &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Cursor.html#method-i-get_key">#get_key &mdash; KyotoCabinet::Cursor</a></li>
+    
+      <li><a href="KyotoCabinet/Cursor.html#method-i-get_value">#get_value &mdash; KyotoCabinet::Cursor</a></li>
+    
+      <li><a href="KyotoCabinet.html#method-i-hash_fnv">#hash_fnv &mdash; KyotoCabinet</a></li>
+    
+      <li><a href="KyotoCabinet.html#method-i-hash_murmur">#hash_murmur &mdash; KyotoCabinet</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-increment">#increment &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-increment_double">#increment_double &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-inspect">#inspect &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Error.html#method-i-inspect">#inspect &mdash; KyotoCabinet::Error</a></li>
+    
+      <li><a href="KyotoCabinet/Cursor.html#method-i-inspect">#inspect &mdash; KyotoCabinet::Cursor</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-iterate">#iterate &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Cursor.html#method-i-jump">#jump &mdash; KyotoCabinet::Cursor</a></li>
+    
+      <li><a href="KyotoCabinet/Cursor.html#method-i-jump_back">#jump_back &mdash; KyotoCabinet::Cursor</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-length">#length &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet.html#method-i-levdist">#levdist &mdash; KyotoCabinet</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-load_snapshot">#load_snapshot &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-match_prefix">#match_prefix &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-match_regex">#match_regex &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-match_similar">#match_similar &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-merge">#merge &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Error.html#method-i-message">#message &mdash; KyotoCabinet::Error</a></li>
+    
+      <li><a href="KyotoCabinet/Error.html#method-i-name">#name &mdash; KyotoCabinet::Error</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-occupy">#occupy &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-open">#open &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-path">#path &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/FileProcessor.html#method-i-process">#process &mdash; KyotoCabinet::FileProcessor</a></li>
+    
+      <li><a href="KyotoCabinet/Cursor.html#method-i-remove">#remove &mdash; KyotoCabinet::Cursor</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-remove">#remove &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-remove_bulk">#remove_bulk &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-replace">#replace &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Cursor.html#method-i-seize">#seize &mdash; KyotoCabinet::Cursor</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-seize">#seize &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-set">#set &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Error.html#method-i-set">#set &mdash; KyotoCabinet::Error</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-set_bulk">#set_bulk &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Cursor.html#method-i-set_value">#set_value &mdash; KyotoCabinet::Cursor</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-shift">#shift &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-size">#size &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-status">#status &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Cursor.html#method-i-step">#step &mdash; KyotoCabinet::Cursor</a></li>
+    
+      <li><a href="KyotoCabinet/Cursor.html#method-i-step_back">#step_back &mdash; KyotoCabinet::Cursor</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-store">#store &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-synchronize">#synchronize &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Cursor.html#method-i-to_s">#to_s &mdash; KyotoCabinet::Cursor</a></li>
+    
+      <li><a href="KyotoCabinet/Error.html#method-i-to_s">#to_s &mdash; KyotoCabinet::Error</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-to_s">#to_s &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-transaction">#transaction &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-tune_encoding">#tune_encoding &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/DB.html#method-i-tune_exception_rule">#tune_exception_rule &mdash; KyotoCabinet::DB</a></li>
+    
+      <li><a href="KyotoCabinet/Visitor.html#method-i-visit_empty">#visit_empty &mdash; KyotoCabinet::Visitor</a></li>
+    
+      <li><a href="KyotoCabinet/Visitor.html#method-i-visit_full">#visit_full &mdash; KyotoCabinet::Visitor</a></li>
+    
+  </ul>
+
+  <div id="validator-badges">
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+</body>
+</html>

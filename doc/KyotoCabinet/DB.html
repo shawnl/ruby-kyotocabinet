@@ -1,0 +1,2631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: KyotoCabinet::DB</title>
+
+  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../kyotocabinet_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="kyotocabinet.rb">kyotocabinet.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link">Object</p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-c-process">::process</a></li>
+          
+          <li><a href="#method-i-5B-5D">#[]</a></li>
+          
+          <li><a href="#method-i-5B-5D-3D">#[]=</a></li>
+          
+          <li><a href="#method-i-accept">#accept</a></li>
+          
+          <li><a href="#method-i-accept_bulk">#accept_bulk</a></li>
+          
+          <li><a href="#method-i-add">#add</a></li>
+          
+          <li><a href="#method-i-append">#append</a></li>
+          
+          <li><a href="#method-i-begin_transaction">#begin_transaction</a></li>
+          
+          <li><a href="#method-i-cas">#cas</a></li>
+          
+          <li><a href="#method-i-check">#check</a></li>
+          
+          <li><a href="#method-i-clear">#clear</a></li>
+          
+          <li><a href="#method-i-close">#close</a></li>
+          
+          <li><a href="#method-i-copy">#copy</a></li>
+          
+          <li><a href="#method-i-count">#count</a></li>
+          
+          <li><a href="#method-i-cursor">#cursor</a></li>
+          
+          <li><a href="#method-i-cursor_process">#cursor_process</a></li>
+          
+          <li><a href="#method-i-delete">#delete</a></li>
+          
+          <li><a href="#method-i-dump_snapshot">#dump_snapshot</a></li>
+          
+          <li><a href="#method-i-each">#each</a></li>
+          
+          <li><a href="#method-i-each_key">#each_key</a></li>
+          
+          <li><a href="#method-i-each_value">#each_value</a></li>
+          
+          <li><a href="#method-i-end_transaction">#end_transaction</a></li>
+          
+          <li><a href="#method-i-error">#error</a></li>
+          
+          <li><a href="#method-i-fetch">#fetch</a></li>
+          
+          <li><a href="#method-i-get">#get</a></li>
+          
+          <li><a href="#method-i-get_bulk">#get_bulk</a></li>
+          
+          <li><a href="#method-i-increment">#increment</a></li>
+          
+          <li><a href="#method-i-increment_double">#increment_double</a></li>
+          
+          <li><a href="#method-i-inspect">#inspect</a></li>
+          
+          <li><a href="#method-i-iterate">#iterate</a></li>
+          
+          <li><a href="#method-i-length">#length</a></li>
+          
+          <li><a href="#method-i-load_snapshot">#load_snapshot</a></li>
+          
+          <li><a href="#method-i-match_prefix">#match_prefix</a></li>
+          
+          <li><a href="#method-i-match_regex">#match_regex</a></li>
+          
+          <li><a href="#method-i-match_similar">#match_similar</a></li>
+          
+          <li><a href="#method-i-merge">#merge</a></li>
+          
+          <li><a href="#method-i-occupy">#occupy</a></li>
+          
+          <li><a href="#method-i-open">#open</a></li>
+          
+          <li><a href="#method-i-path">#path</a></li>
+          
+          <li><a href="#method-i-remove">#remove</a></li>
+          
+          <li><a href="#method-i-remove_bulk">#remove_bulk</a></li>
+          
+          <li><a href="#method-i-replace">#replace</a></li>
+          
+          <li><a href="#method-i-seize">#seize</a></li>
+          
+          <li><a href="#method-i-set">#set</a></li>
+          
+          <li><a href="#method-i-set_bulk">#set_bulk</a></li>
+          
+          <li><a href="#method-i-shift">#shift</a></li>
+          
+          <li><a href="#method-i-size">#size</a></li>
+          
+          <li><a href="#method-i-status">#status</a></li>
+          
+          <li><a href="#method-i-store">#store</a></li>
+          
+          <li><a href="#method-i-synchronize">#synchronize</a></li>
+          
+          <li><a href="#method-i-to_s">#to_s</a></li>
+          
+          <li><a href="#method-i-transaction">#transaction</a></li>
+          
+          <li><a href="#method-i-tune_encoding">#tune_encoding</a></li>
+          
+          <li><a href="#method-i-tune_exception_rule">#tune_exception_rule</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../KyotoCabinet.html">KyotoCabinet</a></li>
+        
+          <li><a href="../KyotoCabinet/Cursor.html">KyotoCabinet::Cursor</a></li>
+        
+          <li><a href="../KyotoCabinet/DB.html">KyotoCabinet::DB</a></li>
+        
+          <li><a href="../KyotoCabinet/Error.html">KyotoCabinet::Error</a></li>
+        
+          <li><a href="../KyotoCabinet/FileProcessor.html">KyotoCabinet::FileProcessor</a></li>
+        
+          <li><a href="../KyotoCabinet/Visitor.html">KyotoCabinet::Visitor</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">KyotoCabinet::DB</h1>
+
+    <div id="description" class="description">
+      
+<p>Interface of database abstraction.</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+      <!-- Constants -->
+      <div id="constants-list" class="section">
+        <h3 class="section-header">Constants</h3>
+        <dl>
+        
+          <dt><a name="GCONCURRENT">GCONCURRENT</a></dt>
+          
+          <dd class="description"><p>generic mode: concurrent mode</p></dd>
+          
+        
+          <dt><a name="GEXCEPTIONAL">GEXCEPTIONAL</a></dt>
+          
+          <dd class="description"><p>generic mode: exceptional mode</p></dd>
+          
+        
+          <dt><a name="MADD">MADD</a></dt>
+          
+          <dd class="description"><p>merge mode: keep the existing value</p></dd>
+          
+        
+          <dt><a name="MAPPEND">MAPPEND</a></dt>
+          
+          <dd class="description"><p>merge mode: append the new value</p></dd>
+          
+        
+          <dt><a name="MREPLACE">MREPLACE</a></dt>
+          
+          <dd class="description"><p>merge mode: modify the existing record only</p></dd>
+          
+        
+          <dt><a name="MSET">MSET</a></dt>
+          
+          <dd class="description"><p>merge mode: overwrite the existing value</p></dd>
+          
+        
+          <dt><a name="OAUTOSYNC">OAUTOSYNC</a></dt>
+          
+          <dd class="description"><p>open mode: auto synchronization</p></dd>
+          
+        
+          <dt><a name="OAUTOTRAN">OAUTOTRAN</a></dt>
+          
+          <dd class="description"><p>open mode: auto transaction</p></dd>
+          
+        
+          <dt><a name="OCREATE">OCREATE</a></dt>
+          
+          <dd class="description"><p>open mode: writer creating</p></dd>
+          
+        
+          <dt><a name="ONOLOCK">ONOLOCK</a></dt>
+          
+          <dd class="description"><p>open mode: open without locking</p></dd>
+          
+        
+          <dt><a name="ONOREPAIR">ONOREPAIR</a></dt>
+          
+          <dd class="description"><p>open mode: open without auto repair</p></dd>
+          
+        
+          <dt><a name="OREADER">OREADER</a></dt>
+          
+          <dd class="description"><p>open mode: open as a reader</p></dd>
+          
+        
+          <dt><a name="OTRUNCATE">OTRUNCATE</a></dt>
+          
+          <dd class="description"><p>open mode: writer truncating</p></dd>
+          
+        
+          <dt><a name="OTRYLOCK">OTRYLOCK</a></dt>
+          
+          <dd class="description"><p>open mode: lock without blocking</p></dd>
+          
+        
+          <dt><a name="OWRITER">OWRITER</a></dt>
+          
+          <dd class="description"><p>open mode: open as a writer</p></dd>
+          
+        
+        </dl>
+      </div>
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">(opts = 0)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Create a database object.</p>
+<ul><li>
+<p><b>@param <em>opts</em></b> the optional features by bitwise-or:
+DB::GEXCEPTIONAL for the exceptional mode, DB::GCONCURRENT for the
+concurrent mode.</p>
+</li><li>
+<p><b>@return</b> the database object.</p>
+</li><li>
+<p><b>@note</b> The exceptional mode means that fatal errors caused by methods
+are reported by exceptions raised.  The concurrent mode means that database
+operations by multiple threads are performed concurrently without the giant
+VM lock.  However, it has a side effect that such methods with call back of
+Ruby code as <a href="DB.html#method-i-accept">DB#accept</a>, <a
+href="DB.html#method-i-accept_bulk">DB#accept_bulk</a>, <a
+href="DB.html#method-i-iterate">DB#iterate</a>, <a
+href="DB.html#method-i-each">DB#each</a>, <a
+href="DB.html#method-i-each_key">DB#each_key</a>, <a
+href="DB.html#method-i-each_value">DB#each_value</a>, <a
+href="Cursor.html#method-i-accept">Cursor#accept</a> are disabled.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="new-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 321</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">opts</span> = <span class="ruby-value">0</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+
+      
+        <div id="process-method" class="method-detail ">
+          <a name="method-c-process"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">process</span><span
+              class="method-args">(path = "*", mode = DB::OWRITER | DB::OCREATE, opts = 0)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Process a database by the block parameter.</p>
+<ul><li>
+<p><b>@param <em>path</em></b> the same to the one of the open method.</p>
+</li><li>
+<p><b>@param <em>mode</em></b> the same to the one of the open method.</p>
+</li><li>
+<p><b>@param <em>opts</em></b> the optional features by bitwise-or:
+DB::GCONCURRENT for the concurrent mode.</p>
+</li><li>
+<p><b>@block</b> a block including operations for the database.  The block
+receives the database object.  The database is opened with the given
+parameters before the block and is closed implicitly after the block.</p>
+</li><li>
+<p><b>@return</b> nil on success, or an error object on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="process-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 670</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">DB</span>.<span class="ruby-identifier">process</span>(<span class="ruby-identifier">path</span> = <span class="ruby-string">&quot;*&quot;</span>, <span class="ruby-identifier">mode</span> = <span class="ruby-constant">DB</span><span class="ruby-operator">::</span><span class="ruby-constant">OWRITER</span> <span class="ruby-operator">|</span> <span class="ruby-constant">DB</span><span class="ruby-operator">::</span><span class="ruby-constant">OCREATE</span>, <span class="ruby-identifier">opts</span> = <span class="ruby-value">0</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- process-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- process-method -->
+
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="5B-5D-method" class="method-detail ">
+          <a name="method-i-5B-5D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">[]</span><span
+              class="method-args">(key)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>An alias of <a href="DB.html#method-i-get">DB#get</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="5B-5D-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 618</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- 5B-5D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- 5B-5D-method -->
+
+      
+        <div id="5B-5D-3D-method" class="method-detail ">
+          <a name="method-i-5B-5D-3D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">[]=</span><span
+              class="method-args">(key, value)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>An alias of <a href="DB.html#method-i-store">DB#store</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="5B-5D-3D-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 622</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- 5B-5D-3D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- 5B-5D-3D-method -->
+
+      
+        <div id="accept-method" class="method-detail ">
+          <a name="method-i-accept"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">accept</span><span
+              class="method-args">(key, visitor = nil, writable = true)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Accept a visitor to a record.</p>
+<ul><li>
+<p><b>@param <em>key</em></b> the key.</p>
+</li><li>
+<p><b>@param <em>visitor</em></b> a visitor object which implements the <a
+href="Visitor.html">Visitor</a> interface.  If it is omitted, the block
+parameter is evaluated.</p>
+</li><li>
+<p><b>@param <em>writable</em></b> true for writable operation, or false for
+read-only operation.</p>
+</li><li>
+<p><b>@block</b> If it is specified, the block is called as the visitor.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li><li>
+<p><b>@note</b> The operation for each record is performed atomically and
+other threads accessing the same record are blocked.  To avoid deadlock,
+any explicit database operation must not be performed in this method.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="accept-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 349</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">accept</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">visitor</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">writable</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- accept-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- accept-method -->
+
+      
+        <div id="accept_bulk-method" class="method-detail ">
+          <a name="method-i-accept_bulk"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">accept_bulk</span><span
+              class="method-args">(keys, visitor = nil, writable = true)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Accept a visitor to multiple records at once.</p>
+<ul><li>
+<p><b>@param <em>keys</em></b> specifies an array of the keys.</p>
+</li><li>
+<p><b>@param <em>visitor</em></b> a visitor object which implements the <a
+href="Visitor.html">Visitor</a> interface, or a function object which
+receives the key and the value.</p>
+</li><li>
+<p><b>@param <em>writable</em></b> true for writable operation, or false for
+read-only operation.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li><li>
+<p><b>@note</b> The operations for specified records are performed atomically
+and other threads accessing the same records are blocked.  To avoid
+deadlock, any explicit database operation must not be performed in this
+method.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="accept_bulk-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 358</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">accept_bulk</span>(<span class="ruby-identifier">keys</span>, <span class="ruby-identifier">visitor</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">writable</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- accept_bulk-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- accept_bulk-method -->
+
+      
+        <div id="add-method" class="method-detail ">
+          <a name="method-i-add"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">add</span><span
+              class="method-args">(key, value)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Add a record.</p>
+<ul><li>
+<p><b>@param <em>key</em></b> the key.</p>
+</li><li>
+<p><b>@param <em>value</em></b> the value.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li><li>
+<p><b>@note</b> If no record corresponds to the key, a new record is created. 
+If the corresponding record exists, the record is not modified and false is
+returned.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="add-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 383</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- add-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- add-method -->
+
+      
+        <div id="append-method" class="method-detail ">
+          <a name="method-i-append"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">append</span><span
+              class="method-args">(key, value)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Append the value of a record.</p>
+<ul><li>
+<p><b>@param <em>key</em></b> the key.</p>
+</li><li>
+<p><b>@param <em>value</em></b> the value.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li><li>
+<p><b>@note</b> If no record corresponds to the key, a new record is created. 
+If the corresponding record exists, the given value is appended at the end
+of the existing value.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="append-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 399</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">append</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- append-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- append-method -->
+
+      
+        <div id="begin_transaction-method" class="method-detail ">
+          <a name="method-i-begin_transaction"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">begin_transaction</span><span
+              class="method-args">(hard = false)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Begin transaction.</p>
+<ul><li>
+<p><b>@param <em>hard</em></b> true for physical synchronization with the
+device, or false for logical synchronization with the file system.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="begin_transaction-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 505</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">begin_transaction</span>(<span class="ruby-identifier">hard</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- begin_transaction-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- begin_transaction-method -->
+
+      
+        <div id="cas-method" class="method-detail ">
+          <a name="method-i-cas"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">cas</span><span
+              class="method-args">(key, oval, nval)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Perform compare-and-swap.</p>
+<ul><li>
+<p><b>@param <em>key</em></b> the key.</p>
+</li><li>
+<p><b>@param <em>oval</em></b> the old value.  nil means that no record
+corresponds.</p>
+</li><li>
+<p><b>@param <em>nval</em></b> the new value.  nil means that the record is
+removed.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="cas-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 425</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cas</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">oval</span>, <span class="ruby-identifier">nval</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- cas-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- cas-method -->
+
+      
+        <div id="check-method" class="method-detail ">
+          <a name="method-i-check"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">check</span><span
+              class="method-args">(key)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Check the existence of a record.</p>
+<ul><li>
+<p><b>@param <em>key</em></b> the key.</p>
+</li><li>
+<p><b>@return</b> the size of the value, or -1 on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="check-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 444</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">check</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- check-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- check-method -->
+
+      
+        <div id="clear-method" class="method-detail ">
+          <a name="method-i-clear"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">clear</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Remove all records.</p>
+<ul><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="clear-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 476</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">clear</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- clear-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- clear-method -->
+
+      
+        <div id="close-method" class="method-detail ">
+          <a name="method-i-close"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">close</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Close the database file.</p>
+<ul><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="close-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 339</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">close</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- close-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- close-method -->
+
+      
+        <div id="copy-method" class="method-detail ">
+          <a name="method-i-copy"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">copy</span><span
+              class="method-args">(dest)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Create a copy of the database file.</p>
+<ul><li>
+<p><b>@param <em>dest</em></b> the path of the destination file.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="copy-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 499</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">copy</span>(<span class="ruby-identifier">dest</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- copy-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- copy-method -->
+
+      
+        <div id="count-method" class="method-detail ">
+          <a name="method-i-count"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">count</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Get the number of records.</p>
+<ul><li>
+<p><b>@return</b> the number of records, or -1 on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="count-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 535</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">count</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- count-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- count-method -->
+
+      
+        <div id="cursor-method" class="method-detail ">
+          <a name="method-i-cursor"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">cursor</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Create a cursor object.</p>
+<ul><li>
+<p><b>@return</b> the return value is the created cursor object.  Each cursor
+should be disabled with the <a
+href="Cursor.html#method-i-disable">Cursor#disable</a> method when it is no
+longer in use.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="cursor-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 585</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cursor</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- cursor-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- cursor-method -->
+
+      
+        <div id="cursor_process-method" class="method-detail ">
+          <a name="method-i-cursor_process"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">cursor_process</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Process a cursor by the block parameter.</p>
+<ul><li>
+<p><b>@block</b> a block including operations for the cursor.  The cursor is
+disabled implicitly after the block.</p>
+</li><li>
+<p><b>@return</b> always nil.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="cursor_process-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 591</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cursor_process</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- cursor_process-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- cursor_process-method -->
+
+      
+        <div id="delete-method" class="method-detail ">
+          <a name="method-i-delete"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">delete</span><span
+              class="method-args">(key, value)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>An alias of <a href="DB.html#method-i-remove">DB#remove</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="delete-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 630</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- delete-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- delete-method -->
+
+      
+        <div id="dump_snapshot-method" class="method-detail ">
+          <a name="method-i-dump_snapshot"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">dump_snapshot</span><span
+              class="method-args">(dest)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Dump records into a snapshot file.</p>
+<ul><li>
+<p><b>@param <em>dest</em></b> the name of the destination file.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="dump_snapshot-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 524</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">dump_snapshot</span>(<span class="ruby-identifier">dest</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- dump_snapshot-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- dump_snapshot-method -->
+
+      
+        <div id="each-method" class="method-detail ">
+          <a name="method-i-each"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">each</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Process each records with a iterator block.</p>
+<ul><li>
+<p><b>@block</b> the iterator to receive the key and the value of each record.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="each-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 649</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">each</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- each-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- each-method -->
+
+      
+        <div id="each_key-method" class="method-detail ">
+          <a name="method-i-each_key"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">each_key</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Process the key of each record with a iterator block.</p>
+<ul><li>
+<p><b>@block</b> the iterator to receive the key of each record.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="each_key-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 655</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">each_key</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- each_key-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- each_key-method -->
+
+      
+        <div id="each_value-method" class="method-detail ">
+          <a name="method-i-each_value"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">each_value</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Process the value of each record with a iterator block.</p>
+<ul><li>
+<p><b>@block</b> the iterator to receive the value of each record.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="each_value-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 661</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">each_value</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- each_value-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- each_value-method -->
+
+      
+        <div id="end_transaction-method" class="method-detail ">
+          <a name="method-i-end_transaction"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">end_transaction</span><span
+              class="method-args">(commit = true)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>End transaction.</p>
+<ul><li>
+<p><b>@param <em>commit</em></b> true to commit the transaction, or false to
+abort the transaction.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="end_transaction-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 511</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">end_transaction</span>(<span class="ruby-identifier">commit</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- end_transaction-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- end_transaction-method -->
+
+      
+        <div id="error-method" class="method-detail ">
+          <a name="method-i-error"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">error</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Get the last happened error.</p>
+<ul><li>
+<p><b>@return</b> the last happened error.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="error-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 326</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">error</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- error-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- error-method -->
+
+      
+        <div id="fetch-method" class="method-detail ">
+          <a name="method-i-fetch"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">fetch</span><span
+              class="method-args">(key, value)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>An alias of <a href="DB.html#method-i-get">DB#get</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="fetch-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 634</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- fetch-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- fetch-method -->
+
+      
+        <div id="get-method" class="method-detail ">
+          <a name="method-i-get"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">get</span><span
+              class="method-args">(key)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Retrieve the value of a record.</p>
+<ul><li>
+<p><b>@param <em>key</em></b> the key.</p>
+</li><li>
+<p><b>@return</b> the value of the corresponding record, or nil on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="get-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 438</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- get-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- get-method -->
+
+      
+        <div id="get_bulk-method" class="method-detail ">
+          <a name="method-i-get_bulk"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">get_bulk</span><span
+              class="method-args">(keys, atomic = true)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Retrieve records at once.</p>
+<ul><li>
+<p><b>@param <em>keys</em></b> an array of the keys of the records to
+retrieve.</p>
+</li><li>
+<p><b>@param <em>atomic</em></b> true to perform all operations atomically, or
+false for non-atomic operations.</p>
+</li><li>
+<p><b>@return</b> a hash of retrieved records, or nil on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="get_bulk-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 471</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_bulk</span>(<span class="ruby-identifier">keys</span>, <span class="ruby-identifier">atomic</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- get_bulk-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- get_bulk-method -->
+
+      
+        <div id="increment-method" class="method-detail ">
+          <a name="method-i-increment"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">increment</span><span
+              class="method-args">(key, num = 0, orig = 0)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Add a number to the numeric integer value of a record.</p>
+<ul><li>
+<p><b>@param <em>key</em></b> the key.</p>
+</li><li>
+<p><b>@param <em>num</em></b> the additional number.</p>
+</li><li>
+<p><b>@param <em>orig</em></b> the origin number if no record corresponds to
+the key.  If it is negative infinity and no record corresponds, this method
+fails.  If it is positive infinity, the value is set as the additional
+number regardless of the current value.</p>
+</li><li>
+<p><b>@return</b> the result value, or nil on failure.</p>
+</li><li>
+<p><b>@note</b> The value is serialized as an 8-byte binary integer in
+big-endian order, not a decimal string.  If existing value is not 8-byte,
+this method fails.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="increment-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 408</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">increment</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">num</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">orig</span> = <span class="ruby-value">0</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- increment-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- increment-method -->
+
+      
+        <div id="increment_double-method" class="method-detail ">
+          <a name="method-i-increment_double"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">increment_double</span><span
+              class="method-args">(key, num = 0, orig = 0)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Add a number to the numeric double value of a record.</p>
+<ul><li>
+<p><b>@param <em>key</em></b> the key.</p>
+</li><li>
+<p><b>@param <em>num</em></b> the additional number.</p>
+</li><li>
+<p><b>@param <em>orig</em></b> the origin number if no record corresponds to
+the key.  If it is negative infinity and no record corresponds, this method
+fails.  If it is positive infinity, the value is set as the additional
+number regardless of the current value.</p>
+</li><li>
+<p><b>@return</b> the result value, or nil on failure.</p>
+</li><li>
+<p><b>@note</b> The value is serialized as an 16-byte binary fixed-point
+number in big-endian order, not a decimal string.  If existing value is not
+16-byte, this method fails.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="increment_double-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 417</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">increment_double</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">num</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">orig</span> = <span class="ruby-value">0</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- increment_double-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- increment_double-method -->
+
+      
+        <div id="inspect-method" class="method-detail ">
+          <a name="method-i-inspect"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">inspect</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Get the inspection string.</p>
+<ul><li>
+<p><b>@return</b> the inspection string.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="inspect-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 614</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- inspect-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- inspect-method -->
+
+      
+        <div id="iterate-method" class="method-detail ">
+          <a name="method-i-iterate"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">iterate</span><span
+              class="method-args">(visitor, writable = true)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Iterate to accept a visitor for each record.</p>
+<ul><li>
+<p><b>@param <em>visitor</em></b> a visitor object which implements the <a
+href="Visitor.html">Visitor</a> interface.  If it is omitted, the block
+parameter is evaluated.</p>
+</li><li>
+<p><b>@param <em>writable</em></b> true for writable operation, or false for
+read-only operation.</p>
+</li><li>
+<p><b>@block</b> If it is specified, the block is called as the visitor.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li><li>
+<p><b>@note</b> The whole iteration is performed atomically and other threads
+are blocked.  To avoid deadlock, any explicit database operation must not
+be performed in this method.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="iterate-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 367</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">iterate</span>(<span class="ruby-identifier">visitor</span>, <span class="ruby-identifier">writable</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- iterate-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- iterate-method -->
+
+      
+        <div id="length-method" class="method-detail ">
+          <a name="method-i-length"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">length</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>An alias of <a href="DB.html#method-i-count">DB#count</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="length-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 643</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">length</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- length-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- length-method -->
+
+      
+        <div id="load_snapshot-method" class="method-detail ">
+          <a name="method-i-load_snapshot"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">load_snapshot</span><span
+              class="method-args">(src)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Load records from a snapshot file.</p>
+<ul><li>
+<p><b>@param <em>src</em></b> the name of the source file.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="load_snapshot-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 530</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_snapshot</span>(<span class="ruby-identifier">src</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- load_snapshot-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- load_snapshot-method -->
+
+      
+        <div id="match_prefix-method" class="method-detail ">
+          <a name="method-i-match_prefix"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">match_prefix</span><span
+              class="method-args">(prefix, max = -1)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Get keys matching a prefix string.</p>
+<ul><li>
+<p><b>@param <em>prefix</em></b> the prefix string.</p>
+</li><li>
+<p><b>@param <em>max</em></b> the maximum number to retrieve.  If it is
+negative, no limit is specified.</p>
+</li><li>
+<p><b>@return</b> an array of matching keys, or nil on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="match_prefix-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 557</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">match_prefix</span>(<span class="ruby-identifier">prefix</span>, <span class="ruby-identifier">max</span> = <span class="ruby-value">-1</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- match_prefix-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- match_prefix-method -->
+
+      
+        <div id="match_regex-method" class="method-detail ">
+          <a name="method-i-match_regex"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">match_regex</span><span
+              class="method-args">(regex, max = -1)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Get keys matching a regular expression string.</p>
+<ul><li>
+<p><b>@param <em>regex</em></b> the regular expression string.</p>
+</li><li>
+<p><b>@param <em>max</em></b> the maximum number to retrieve.  If it is
+negative, no limit is specified.</p>
+</li><li>
+<p><b>@return</b> an array of matching keys, or nil on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="match_regex-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 564</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">match_regex</span>(<span class="ruby-identifier">regex</span>, <span class="ruby-identifier">max</span> = <span class="ruby-value">-1</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- match_regex-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- match_regex-method -->
+
+      
+        <div id="match_similar-method" class="method-detail ">
+          <a name="method-i-match_similar"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">match_similar</span><span
+              class="method-args">(origin, range = 1, utf = false, max = -1)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Get keys similar to a string in terms of the levenshtein distance.</p>
+<ul><li>
+<p><b>@param <em>origin</em></b> the origin string.</p>
+</li><li>
+<p><b>@param <em>range</em></b> the maximum distance of keys to adopt.</p>
+</li><li>
+<p><b>@param <em>utf</em></b> flag to treat keys as UTF-8 strings.</p>
+</li><li>
+<p><b>@param <em>max</em></b> the maximum number to retrieve.  If it is
+negative, no limit is specified.</p>
+</li><li>
+<p><b>@return</b> an array of matching keys, or nil on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="match_similar-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 573</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">match_similar</span>(<span class="ruby-identifier">origin</span>, <span class="ruby-identifier">range</span> = <span class="ruby-value">1</span>, <span class="ruby-identifier">utf</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">max</span> = <span class="ruby-value">-1</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- match_similar-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- match_similar-method -->
+
+      
+        <div id="merge-method" class="method-detail ">
+          <a name="method-i-merge"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">merge</span><span
+              class="method-args">(srcary, mode = DB::MSET)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Merge records from other databases.</p>
+<ul><li>
+<p><b>@param <em>srcary</em></b> an array of the source detabase objects.</p>
+</li><li>
+<p><b>@param <em>mode</em></b> the merge mode.  DB::MSET to overwrite the
+existing value, DB::MADD to keep the existing value, DB::MAPPEND to append
+the new value.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="merge-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 580</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">merge</span>(<span class="ruby-identifier">srcary</span>, <span class="ruby-identifier">mode</span> = <span class="ruby-constant">DB</span><span class="ruby-operator">::</span><span class="ruby-constant">MSET</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- merge-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- merge-method -->
+
+      
+        <div id="occupy-method" class="method-detail ">
+          <a name="method-i-occupy"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">occupy</span><span
+              class="method-args">(writable = false, proc = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Occupy database by locking and do something meanwhile.</p>
+<ul><li>
+<p><b>@param <em>writable</em></b> true to use writer lock, or false to use
+reader lock.</p>
+</li><li>
+<p><b>@param <em>proc</em></b> a processor object which implements the <a
+href="FileProcessor.html">FileProcessor</a> interface.  If it is nil, no
+processing is performed.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li><li>
+<p><b>@note</b> The operation of the processor is performed atomically and
+other threads accessing the same record are blocked.  To avoid deadlock,
+any explicit database operation must not be performed in this method.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="occupy-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 493</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">occupy</span>(<span class="ruby-identifier">writable</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">proc</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- occupy-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- occupy-method -->
+
+      
+        <div id="open-method" class="method-detail ">
+          <a name="method-i-open"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">open</span><span
+              class="method-args">(path = ":", mode = DB::OWRITER | DB::OCREATE)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Open a database file.</p>
+<ul><li>
+<p><b>@param <em>path</em></b> the path of a database file.  If it is "-", the
+database will be a prototype hash database.  If it is "+", the database
+will be a prototype tree database.  If it is ":", the database will be a
+stash database.  If it is "*", the database will be a cache hash database. 
+If it is "%", the database will be a cache tree database.  If its suffix is
+".kch", the database will be a file hash database.  If its suffix is
+".kct", the database will be a file tree database.  If its suffix is
+".kcd", the database will be a directory hash database.  If its suffix is
+".kcf", the database will be a directory tree database.  If its suffix is
+".kcx", the database will be a plain text database.  Otherwise, this
+function fails.  Tuning parameters can trail the name, separated by "#". 
+Each parameter is composed of the name and the value, separated by "=".  If
+the "type" parameter is specified, the database type is determined by the
+value in "-", "+", ":", "*", "%", "kch", "kct", "kcd", kcf", and "kcx". 
+All database types support the logging parameters of "log", "logkinds", and
+"logpx".  The prototype hash database and the prototype tree database do
+not support any other tuning parameter.  The stash database supports
+"bnum".  The cache hash database supports "opts", "bnum", "zcomp",
+"capcnt", "capsiz", and "zkey".  The cache tree database supports all
+parameters of the cache hash database except for capacity limitation, and
+supports "psiz", "rcomp", "pccap" in addition.  The file hash database
+supports "apow", "fpow", "opts", "bnum", "msiz", "dfunit", "zcomp", and
+"zkey".  The file tree database supports all parameters of the file hash
+database and "psiz", "rcomp", "pccap" in addition.  The directory hash
+database supports "opts", "zcomp", and "zkey".  The directory tree database
+supports all parameters of the directory hash database and "psiz", "rcomp",
+"pccap" in addition.  The plain text database does not support any other
+tuning parameter.</p>
+</li><li>
+<p><b>@param <em>mode</em></b> the connection mode.  DB::OWRITER as a writer,
+DB::OREADER as a reader.  The following may be added to the writer mode by
+bitwise-or: DB::OCREATE, which means it creates a new database if the file
+does not exist, DB::OTRUNCATE, which means it creates a new database
+regardless if the file exists, DB::OAUTOTRAN, which means each updating
+operation is performed in implicit transaction, DB::OAUTOSYNC, which means
+each updating operation is followed by implicit synchronization with the
+file system.  The following may be added to both of the reader mode and the
+writer mode by bitwise-or: DB::ONOLOCK, which means it opens the database
+file without file locking, DB::OTRYLOCK, which means locking is performed
+without blocking, DB::ONOREPAIR, which means the database file is not
+repaired implicitly even if file destruction is detected.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li><li>
+<p><b>@note</b> The tuning parameter "log" is for the original "tune_logger"
+and the value specifies the path of the log file, or "-" for the standard
+output, or "+" for the standard error.  "logkinds" specifies kinds of
+logged messages and the value can be "debug", "info", "warn", or "error". 
+"logpx" specifies the prefix of each log message.  "opts" is for
+"tune_options" and the value can contain "s" for the small option, "l" for
+the linear option, and "c" for the compress option.  "bnum" corresponds to
+"tune_bucket".  "zcomp" is for "tune_compressor" and the value can be
+"zlib" for the ZLIB raw compressor, "def" for the ZLIB deflate compressor,
+"gz" for the ZLIB gzip compressor, "lzo" for the LZO compressor, "lzma" for
+the LZMA compressor, or "arc" for the Arcfour cipher.  "zkey" specifies the
+cipher key of the compressor.  "capcnt" is for "cap_count".  "capsiz" is
+for "cap_size".  "psiz" is for "tune_page".  "rcomp" is for
+"tune_comparator" and the value can be "lex" for the lexical comparator,
+"dec" for the decimal comparator, "lexdesc" for the lexical descending
+comparator, or "decdesc" for the decimal descending comparator.  "pccap" is
+for "tune_page_cache".  "apow" is for "tune_alignment".  "fpow" is for
+"tune_fbp".  "msiz" is for "tune_map".  "dfunit" is for "tune_defrag". 
+Every opened database must be closed by the PolyDB::close method when it is
+no longer in use.  It is not allowed for two or more database objects in
+the same process to keep their connections to the same database file at the
+same time.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="open-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 334</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span> = <span class="ruby-string">&quot;:&quot;</span>, <span class="ruby-identifier">mode</span> = <span class="ruby-constant">DB</span><span class="ruby-operator">::</span><span class="ruby-constant">OWRITER</span> <span class="ruby-operator">|</span> <span class="ruby-constant">DB</span><span class="ruby-operator">::</span><span class="ruby-constant">OCREATE</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- open-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- open-method -->
+
+      
+        <div id="path-method" class="method-detail ">
+          <a name="method-i-path"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">path</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Get the path of the database file.</p>
+<ul><li>
+<p><b>@return</b> the path of the database file, or nil on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="path-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 545</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">path</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- path-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- path-method -->
+
+      
+        <div id="remove-method" class="method-detail ">
+          <a name="method-i-remove"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">remove</span><span
+              class="method-args">(key)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Remove a record.</p>
+<ul><li>
+<p><b>@param <em>key</em></b> the key.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li><li>
+<p><b>@note</b> If no record corresponds to the key, false is returned.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="remove-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 432</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- remove-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- remove-method -->
+
+      
+        <div id="remove_bulk-method" class="method-detail ">
+          <a name="method-i-remove_bulk"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">remove_bulk</span><span
+              class="method-args">(keys, atomic = true)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Remove records at once.</p>
+<ul><li>
+<p><b>@param <em>keys</em></b> an array of the keys of the records to remove.</p>
+</li><li>
+<p><b>@param <em>atomic</em></b> true to perform all operations atomically, or
+false for non-atomic operations.</p>
+</li><li>
+<p><b>@return</b> the number of removed records, or -1 on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="remove_bulk-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 464</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_bulk</span>(<span class="ruby-identifier">keys</span>, <span class="ruby-identifier">atomic</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- remove_bulk-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- remove_bulk-method -->
+
+      
+        <div id="replace-method" class="method-detail ">
+          <a name="method-i-replace"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">replace</span><span
+              class="method-args">(key, value)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Replace the value of a record.</p>
+<ul><li>
+<p><b>@param <em>key</em></b> the key.</p>
+</li><li>
+<p><b>@param <em>value</em></b> the value.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li><li>
+<p><b>@note</b> If no record corresponds to the key, no new record is created
+and false is returned.  If the corresponding record exists, the value is
+modified.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="replace-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 391</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">replace</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- replace-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- replace-method -->
+
+      
+        <div id="seize-method" class="method-detail ">
+          <a name="method-i-seize"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">seize</span><span
+              class="method-args">(key)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Retrieve the value of a record and remove it atomically.</p>
+<ul><li>
+<p><b>@param <em>key</em></b> the key.</p>
+</li><li>
+<p><b>@return</b> the value of the corresponding record, or nil on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="seize-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 450</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">seize</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- seize-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- seize-method -->
+
+      
+        <div id="set-method" class="method-detail ">
+          <a name="method-i-set"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">set</span><span
+              class="method-args">(key, value)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Set the value of a record.</p>
+<ul><li>
+<p><b>@param <em>key</em></b> the key.</p>
+</li><li>
+<p><b>@param <em>value</em></b> the value.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li><li>
+<p><b>@note</b> If no record corresponds to the key, a new record is created. 
+If the corresponding record exists, the value is overwritten.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="set-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 375</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- set-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- set-method -->
+
+      
+        <div id="set_bulk-method" class="method-detail ">
+          <a name="method-i-set_bulk"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">set_bulk</span><span
+              class="method-args">(recs, atomic = true)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Store records at once.</p>
+<ul><li>
+<p><b>@param <em>recs</em></b> a hash of the records to store.</p>
+</li><li>
+<p><b>@param <em>atomic</em></b> true to perform all operations atomically, or
+false for non-atomic operations.</p>
+</li><li>
+<p><b>@return</b> the number of stored records, or -1 on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="set_bulk-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 457</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_bulk</span>(<span class="ruby-identifier">recs</span>, <span class="ruby-identifier">atomic</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- set_bulk-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- set_bulk-method -->
+
+      
+        <div id="shift-method" class="method-detail ">
+          <a name="method-i-shift"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">shift</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Remove the first record.</p>
+<ul><li>
+<p><b>@return</b> a pair of the key and the value of the removed record, or
+nil on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="shift-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 639</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">shift</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- shift-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- shift-method -->
+
+      
+        <div id="size-method" class="method-detail ">
+          <a name="method-i-size"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">size</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Get the size of the database file.</p>
+<ul><li>
+<p><b>@return</b> the size of the database file in bytes, or -1 on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="size-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 540</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">size</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- size-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- size-method -->
+
+      
+        <div id="status-method" class="method-detail ">
+          <a name="method-i-status"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">status</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Get the miscellaneous status information.</p>
+<ul><li>
+<p><b>@return</b> a hash of the status information, or nil on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="status-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 550</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">status</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- status-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- status-method -->
+
+      
+        <div id="store-method" class="method-detail ">
+          <a name="method-i-store"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">store</span><span
+              class="method-args">(key, value)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>An alias of <a href="DB.html#method-i-store">DB#store</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="store-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 626</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">store</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- store-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- store-method -->
+
+      
+        <div id="synchronize-method" class="method-detail ">
+          <a name="method-i-synchronize"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">synchronize</span><span
+              class="method-args">(hard = false, proc = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Synchronize updated contents with the file and the device.</p>
+<ul><li>
+<p><b>@param <em>hard</em></b> true for physical synchronization with the
+device, or false for logical synchronization with the file system.</p>
+</li><li>
+<p><b>@param <em>proc</em></b> a postprocessor object which implements the <a
+href="FileProcessor.html">FileProcessor</a> interface.  If it is nil, no
+postprocessing is performed.</p>
+</li><li>
+<p><b>@block</b> If it is specified, the block is called for postprocessing.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li><li>
+<p><b>@note</b> The operation of the processor is performed atomically and
+other threads accessing the same record are blocked.  To avoid deadlock,
+any explicit database operation must not be performed in this method.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="synchronize-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 485</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">synchronize</span>(<span class="ruby-identifier">hard</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">proc</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- synchronize-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- synchronize-method -->
+
+      
+        <div id="to_s-method" class="method-detail ">
+          <a name="method-i-to_s"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">to_s</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Get the string expression.</p>
+<ul><li>
+<p><b>@return</b> the string expression.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="to_s-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 609</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>()
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- to_s-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- to_s-method -->
+
+      
+        <div id="transaction-method" class="method-detail ">
+          <a name="method-i-transaction"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">transaction</span><span
+              class="method-args">(hard = false)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Perform entire transaction by the block parameter.</p>
+<ul><li>
+<p><b>@param <em>hard</em></b> true for physical synchronization with the
+device, or false for logical synchronization with the file system.</p>
+</li><li>
+<p><b>@block</b> a block including operations during transaction.  If the
+block returns true, the transaction is committed.  If the block returns
+false or an exception is thrown, the transaction is aborted.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="transaction-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 518</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">transaction</span>(<span class="ruby-identifier">hard</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- transaction-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- transaction-method -->
+
+      
+        <div id="tune_encoding-method" class="method-detail ">
+          <a name="method-i-tune_encoding"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">tune_encoding</span><span
+              class="method-args">(enc)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Set the encoding of external strings.</p>
+<ul><li>
+<p><b>@param <em>enc</em></b> the name of the encoding or its encoding object.</p>
+</li><li>
+<p><b>@note</b> The default encoding of external strings is
+Encoding::ASCII_8BIT.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="tune_encoding-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 604</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tune_encoding</span>(<span class="ruby-identifier">enc</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- tune_encoding-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- tune_encoding-method -->
+
+      
+        <div id="tune_exception_rule-method" class="method-detail ">
+          <a name="method-i-tune_exception_rule"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">tune_exception_rule</span><span
+              class="method-args">(codes)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Set the rule about throwing exception.</p>
+<ul><li>
+<p><b>@param <em>codes</em></b> an array of error codes.  If each method
+occurs an error corresponding to one of the specified codes, the error is
+thrown as an exception.</p>
+</li><li>
+<p><b>@return</b> true on success, or false on failure.</p>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="tune_exception_rule-source">
+<pre>
+<span class="ruby-comment"># File kyotocabinet.rb, line 597</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tune_exception_rule</span>(<span class="ruby-identifier">codes</span>)
+  <span class="ruby-comment"># (native code)</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- tune_exception_rule-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- tune_exception_rule-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+
