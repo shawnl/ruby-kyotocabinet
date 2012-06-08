@@ -3,24 +3,25 @@ From: Shawn Landden <shawnlandden@gmail.com>
 Date: Fri, 8 Jun 2012 04:31:20 -0700
 Subject: [PATCH] fix test.rb to work with gem2deb
 
- test.rb |    9 +++++++++
- 1 file changed, 9 insertions(+)
+ test.rb |    7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/test.rb b/test.rb
-index 17ea4ce..d879f17 100755
+index 17ea4ce..f952668 100755
 --- a/test.rb
 +++ b/test.rb
-@@ -29,6 +29,15 @@ formats = [
+@@ -29,6 +29,16 @@ formats = [
              "kctest.rb misc '%s'",
             ]
  
-+# For Debian: gem2deb builds both 1.8 and 1.9.1 in succession, leading this file to be the wrong version
-+# remove this so that installed versions get included
-+# feel free to remove this block so that you build according to the docs
-+begin
-+  File.unlink("kyotocabinet.so")
-+rescue Errno::ENOENT
-+ # second time file wont be there
++# For Debian: gem2deb builds both 1.8 and 1.9.1 in succession, before testing.
++# This leads to this file to being the wrong version, causing segfaults.
++# Check for that, so that we call force fall back to gem2deb installed .so files
++if ("ruby" + /libruby-?(\d+.\d+(.\d+)?)\.so/.match(`ldd kyotocabinet.so`).to_a[1].to_s != RbConfig::CONFIG['ruby_install_name'])
++  begin
++    File.unlink("kyotocabinet.so")
++  rescue Errno::ENOENT
++  end
 +end
 +
  system("rm -rf casket*")
