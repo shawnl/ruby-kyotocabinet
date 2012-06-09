@@ -19,6 +19,8 @@ Package: ruby-kyotocabinet
 Architecture: any
 XB-Ruby-Versions: ${ruby:Versions}
 Depends: ${shlibs:Depends}, ${misc:Depends}, ruby | ruby-interpreter
+# used for rdoc
+Suggests: libjs-jquery
 Description: Straightforward implementation of DBM - Ruby bindings
  Kyoto Cabinet is a library of routines for managing a database. The
  database is a simple data file containing records, each is a pair of
