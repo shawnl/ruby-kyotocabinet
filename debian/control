@@ -30,7 +30,7 @@ Description: Straightforward implementation of DBM - Ruby bindings
  concept of data tables nor data types. Records are organized in
  hash table or B+ tree.
  .
- Warning: while this library is thread-safe with Ruby 1.9.x (YARV),
+ Warning: while this library is thread-safe with Ruby 1.9.x,
  it is NOT thread-safe with Ruby 1.8.x.
  .
  This package contains the bindings for the Ruby scripting language.
