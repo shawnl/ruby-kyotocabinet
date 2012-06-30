@@ -832,16 +832,22 @@ static void define_module() {
 }
 
 
-/**
- * Implementation of conv_str.
+/*
+ *  call-seq:
+ *     conv_str(obj)   -> str
+ *
+ *  Convert any object to a string.
  */
 static VALUE kc_conv_str(VALUE vself, VALUE vstr) {
   return StringValueEx(vstr);
 }
 
 
-/**
- * Implementation of atoi.
+/*
+ *  call-seq:
+ *     atoi(str)   -> 0 or int
+ *
+ *  Convert a string to an integer.  If the string does not contain numeric expression, 0 is returned.
  */
 static VALUE kc_atoi(VALUE vself, VALUE vstr) {
   vstr = StringValueEx(vstr);
@@ -850,8 +856,11 @@ static VALUE kc_atoi(VALUE vself, VALUE vstr) {
 }
 
 
-/**
- * Implementation of atoix.
+/*
+ *  call-seq:
+ *     atoi(str)   -> fixnum
+ *
+ *  Convert a string with a metric prefix to an integer. <i>str</i> can be trailed by a binary metric prefix.  "K", "M", "G", "T", "P", and "E" are supported.  They are case-insensitive.  If the string does not contain numeric expression, 0 is returned.  If the integer overflows the domain, INT64_MAX or INT64_MIN is returned according to the sign.
  */
 static VALUE kc_atoix(VALUE vself, VALUE vstr) {
   vstr = StringValueEx(vstr);
@@ -860,8 +869,11 @@ static VALUE kc_atoix(VALUE vself, VALUE vstr) {
 }
 
 
-/**
- * Implementation of atof.
+/*
+ *  call-seq:
+ *     atof(str)   -> 0.0 or float
+ *
+ *  Convert a string to a real number.  If the string does not contain numeric expression, 0.0 is returned.
  */
 static VALUE kc_atof(VALUE vself, VALUE vstr) {
   vstr = StringValueEx(vstr);
@@ -870,8 +882,11 @@ static VALUE kc_atof(VALUE vself, VALUE vstr) {
 }
 
 
-/**
- * Implementation of hash_murmur.
+/*
+ *  call-seq:
+ *     hash_murmur(str)   -> fixnum
+ *
+ *  Get the hash value of a string by MurMur hashing.
  */
 static VALUE kc_hash_murmur(VALUE vself, VALUE vstr) {
   vstr = StringValueEx(vstr);
@@ -880,8 +895,11 @@ static VALUE kc_hash_murmur(VALUE vself, VALUE vstr) {
 }
 
 
-/**
- * Implementation of hash_fnv.
+/*
+ *  call-seq:
+ *     hash_fnv(str)   -> fixnum
+ *
+ *  Get the hash value of a string by FNV hashing.
  */
 static VALUE kc_hash_fnv(VALUE vself, VALUE vstr) {
   vstr = StringValueEx(vstr);
@@ -890,8 +908,11 @@ static VALUE kc_hash_fnv(VALUE vself, VALUE vstr) {
 }
 
 
-/**
- * Implementation of levdist.
+/*
+ *  call-seq:
+ *     levdist(str1, str2, utf=false)   -> int
+ *
+ *  Calculate the levenshtein distance of two strings.
  */
 static VALUE kc_levdist(int argc, VALUE* argv, VALUE vself) {
   volatile VALUE va, vb, vutf;

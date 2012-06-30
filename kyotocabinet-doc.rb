@@ -18,50 +18,6 @@
 module KyotoCabinet
   # The version information
   VERSION = "x.y.z"
-  # Convert any object to a string.
-  # @param obj the object.
-  # @return the result string.
-  def conv_str(obj)
-    # (native code)
-  end
-  # Convert a string to an integer.
-  # @param str the string.
-  # @return the integer.  If the string does not contain numeric expression, 0 is returned.
-  def atoi(str)
-    # (native code)
-  end
-  # Convert a string with a metric prefix to an integer.
-  # @param str the string, which can be trailed by a binary metric prefix.  "K", "M", "G", "T", "P", and "E" are supported.  They are case-insensitive.
-  # @return the integer.  If the string does not contain numeric expression, 0 is returned.  If the integer overflows the domain, INT64_MAX or INT64_MIN is returned according to the sign.
-  def atoix(str)
-    # (native code)
-  end
-  # Convert a string to a real number.
-  # @param str the string.
-  # @return the real number.  If the string does not contain numeric expression, 0.0 is returned.
-  def atof(str)
-    # (native code)
-  end
-  # Get the hash value of a string by MurMur hashing.
-  # @param str the string.
-  # @return the hash value.
-  def hash_murmur(str)
-    # (native code)
-  end
-  # Get the hash value of a string by FNV hashing.
-  # @param str the string.
-  # @return the hash value.
-  def hash_fnv(str)
-    # (native code)
-  end
-  # Calculate the levenshtein distance of two strings.
-  # @param a one string.
-  # @param b the other string.
-  # @param utf flag to treat keys as UTF-8 strings.
-  # @return the levenshtein distance.
-  def levdist(a, b, utf)
-    # (native code)
-  end
   #
   # Error data.
   #
