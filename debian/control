@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Ruby Extras Maintainers <pkg-ruby-extras-maintainers@lists.alioth.debian.org>
 Uploaders: Shawn Landden <shawnlandden@gmail.com>
 DM-Upload-Allowed: yes
-Build-Depends: debhelper (>= 7.0.50~),
+Build-Depends: debhelper (>= 9),
  gem2deb (>= 0.2.12~),
  libkyotocabinet-dev,
  pkg-config
