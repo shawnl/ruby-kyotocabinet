@@ -15,6 +15,6 @@
 	dh $@ --buildsystem=ruby --with ruby
 
 override_dh_installdocs:
-	ln -sf /usr/share/javascript/jquery/jquery.min.js \
-doc/js/jquery.js
 	dh_installdocs
+	ln -sf /usr/share/javascript/jquery/jquery.min.js \
+debian/ruby-kyotocabinet/usr/share/doc/ruby-kyotocabinet/doc/js/jquery.js
