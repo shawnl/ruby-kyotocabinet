@@ -44,57 +44,6 @@ module KyotoCabinet
     SYSTEM = 9
     # error code: miscellaneous error
     MISC = 15
-    # Create an error object.
-    # @param code the error code.
-    # @param message the supplement message.
-    # @return the error object.
-    def initialize(code, message)
-      # (native code)
-    end
-    # Set the error information.
-    # @param code the error code.
-    # @param message the supplement message.
-    # @return always nil.
-    def set(code, message)
-      # (native code)
-    end
-    # Get the error code.
-    # @return the error code.
-    def code()
-      # (native code)
-    end
-    # Get the readable string of the code.
-    # @return the readable string of the code.
-    def name()
-      # (native code)
-    end
-    # Get the supplement message.
-    # @return the supplement message.
-    def message()
-      # (native code)
-    end
-    # Get the string expression.
-    # @return the string expression.
-    def to_s()
-      # (native code)
-    end
-    # Get the inspection string.
-    # @return the inspection string.
-    def inspect()
-      # (native code)
-    end
-    # Equality operator.
-    # @param right an error object or an error code.
-    # @return true for the both operands are equal, or false if not.
-    def ==(right)
-      # (native code)
-    end
-    # Negation equality operator.
-    # @param right an error object or an error code.
-    # @return false for the both operands are equal, or true if not.
-    def !=(right)
-      # (native code)
-    end
   end
   #
   # Interface to access a record.

@@ -989,8 +989,11 @@ static void err_define_child(const char* name, uint32_t code) {
 }
 
 
-/**
- * Implementation of initialize.
+/*
+ *  call-seq:
+ *     new(code, message)   -> error
+ *
+ *  Create an error object.
  */
 static VALUE err_initialize(int argc, VALUE* argv, VALUE vself) {
   volatile VALUE vcode, vmessage;
@@ -1015,8 +1018,11 @@ static VALUE err_initialize(int argc, VALUE* argv, VALUE vself) {
 }
 
 
-/**
- * Implementation of set.
+/*
+ *  call-seq:
+ *     error.set(code, message)   -> nil
+ *
+ *  Set the error information.
  */
 static VALUE err_set(VALUE vself, VALUE vcode, VALUE vmessage) {
   rb_ivar_set(vself, id_err_code, vcode);
@@ -1025,16 +1031,22 @@ static VALUE err_set(VALUE vself, VALUE vcode, VALUE vmessage) {
 }
 
 
-/**
- * Implementation of code.
+/*
+ *  call-seq:
+ *     error.code   -> int
+ *
+ *  Set the error information.
  */
 static VALUE err_code(VALUE vself) {
   return rb_ivar_get(vself, id_err_code);
 }
 
 
-/**
- * Implementation of name.
+/*
+ *  call-seq:
+ *     error.name   -> str
+ *
+ *  Get the readable string of the code.
  */
 static VALUE err_name(VALUE vself) {
   int32_t code = FIX2INT(rb_ivar_get(vself, id_err_code));
@@ -1042,16 +1054,22 @@ static VALUE err_name(VALUE vself) {
 }
 
 
-/**
- * Implementation of message.
+/*
+ *  call-seq:
+ *     error.message   -> str
+ *
+ *  Get the supplement message.
  */
 static VALUE err_message(VALUE vself) {
   return rb_ivar_get(vself, id_err_message);
 }
 
 
-/**
- * Implementation of to_s.
+/*
+ *  call-seq:
+ *     error.to_s   -> str
+ *
+ *  Get the string expression.
  */
 static VALUE err_to_s(VALUE vself) {
   int32_t code = NUM2INT(rb_ivar_get(vself, id_err_code));
@@ -1064,8 +1082,11 @@ static VALUE err_to_s(VALUE vself) {
 }
 
 
-/**
- * Implementation of inspect.
+/*
+ *  call-seq:
+ *     error.inspect   -> str
+ *
+ *  Get the inspection string.
  */
 static VALUE err_inspect(VALUE vself) {
   int32_t code = NUM2INT(rb_ivar_get(vself, id_err_code));
@@ -1078,8 +1099,11 @@ static VALUE err_inspect(VALUE vself) {
 }
 
 
-/**
- * Implementation of op_eq.
+/*
+ *  call-seq:
+ *     error == obj   -> true or false
+ *
+ *  Equality operator. <i>obj</i> can be an error object or an error code.
  */
 static VALUE err_op_eq(VALUE vself, VALUE vright) {
   if (vright == Qnil) return Qfalse;
@@ -1090,8 +1114,11 @@ static VALUE err_op_eq(VALUE vself, VALUE vright) {
 }
 
 
-/**
- * Implementation of op_ne.
+/*
+ *  call-seq:
+ *     error != obj   -> true or false
+ *
+ *  Negation equality operator. <i>obj</i> can be an error object or an error code.
  */
 static VALUE err_op_ne(VALUE vself, VALUE vright) {
   if (vright == Qnil) return Qtrue;
