@@ -53,19 +53,6 @@ module KyotoCabinet
     NOP = "(magic data)"
     # magic data: remove the record
     REMOVE = "(magic data)"
-    # Visit a record.
-    # @param key the key.
-    # @param value the value.
-    # @return If it is a string, the value is replaced by the content.  If it is Visitor::NOP, nothing is modified.  If it is Visitor::REMOVE, the record is removed.
-    def visit_full(key, value)
-      # (native code)
-    end
-    # Visit a empty record space.
-    # @param key the key.
-    # @return If it is a string, the value is replaced by the content.  If it is Visitor::NOP or Visitor::REMOVE, nothing is modified.
-    def visit_empty(key)
-      # (native code)
-    end
   end
   #
   # Interface to process the database file.

@@ -1161,16 +1161,22 @@ static VALUE vis_magic_initialize(VALUE vself, VALUE vnum) {
 }
 
 
-/**
- * Implementation of visit_full.
+/*
+ *  call-seq:
+ *     visitor.visit_full(key, value)   -> str or Visitor::NOP or Visitor::REMOVE
+ *
+ *  Visit a record. When returns string, the value has been replaced by the content.  If returns Visitor::NOP, nothing has been modified.  If returns Visitor::REMOVE, the record has been removed.
  */
 static VALUE vis_visit_full(VALUE vself, VALUE vkey, VALUE vvalue) {
   return rb_const_get(cls_vis, id_vis_nop);
 }
 
 
-/**
- * Implementation of visit_empty.
+/*
+ *  call-seq:
+ *     visitor.visit_empty(key)   -> str or Visitor::NOP or Visitor::REMOVE
+ *
+ *  Visit an empty record space. When returns string, the value has been replaced by the content.  If returns Visitor::NOP or Visitor::REMOVE, nothing has been modified.
  */
 static VALUE vis_visit_empty(VALUE vself, VALUE vkey) {
   return rb_const_get(cls_vis, id_vis_nop);
